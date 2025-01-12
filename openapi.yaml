@@ -1,0 +1,172 @@
+# Generated with protoc-gen-openapi
+# https://github.com/google/gnostic/tree/master/cmd/protoc-gen-openapi
+
+openapi: 3.0.3
+info:
+    title: ""
+    version: 0.0.1
+paths:
+    /create_user:
+        post:
+            tags:
+                - User
+            operationId: User_CreateUser
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/api.user.v1.CreateUserRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.user.v1.CreateUserReply'
+    /get_user_info:
+        get:
+            tags:
+                - User
+            operationId: User_GetUser
+            parameters:
+                - name: userID
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.user.v1.GetUserReply'
+    /get_user_info_byname:
+        get:
+            tags:
+                - User
+            operationId: User_GetUserByName
+            parameters:
+                - name: userName
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.user.v1.GetUserByNameReply'
+    /helloworld/{name}:
+        get:
+            tags:
+                - Greeter
+            description: Sends a greeting
+            operationId: Greeter_SayHello
+            parameters:
+                - name: name
+                  in: path
+                  required: true
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/helloworld.v1.HelloReply'
+components:
+    schemas:
+        api.user.v1.CreateUserData:
+            type: object
+            properties:
+                userID:
+                    type: string
+                token:
+                    type: string
+        api.user.v1.CreateUserReply:
+            type: object
+            properties:
+                code:
+                    type: integer
+                    format: int32
+                message:
+                    type: string
+                data:
+                    $ref: '#/components/schemas/api.user.v1.CreateUserData'
+        api.user.v1.CreateUserRequest:
+            type: object
+            properties:
+                userName:
+                    type: string
+                pwd:
+                    type: string
+                sex:
+                    type: integer
+                    format: int32
+                age:
+                    type: integer
+                    format: int32
+                email:
+                    type: string
+                contact:
+                    type: string
+                mobile:
+                    type: string
+                idCard:
+                    type: string
+        api.user.v1.GetUserByNameReply:
+            type: object
+            properties:
+                code:
+                    type: integer
+                    format: int32
+                message:
+                    type: string
+                data:
+                    $ref: '#/components/schemas/api.user.v1.GetUserReplyData'
+        api.user.v1.GetUserReply:
+            type: object
+            properties:
+                code:
+                    type: integer
+                    format: int32
+                message:
+                    type: string
+                data:
+                    $ref: '#/components/schemas/api.user.v1.GetUserReplyData'
+        api.user.v1.GetUserReplyData:
+            type: object
+            properties:
+                userID:
+                    type: string
+                userName:
+                    type: string
+                pwd:
+                    type: string
+                sex:
+                    type: integer
+                    format: int32
+                age:
+                    type: integer
+                    format: int32
+                email:
+                    type: string
+                contact:
+                    type: string
+                mobile:
+                    type: string
+                idCard:
+                    type: string
+        helloworld.v1.HelloReply:
+            type: object
+            properties:
+                message:
+                    type: string
+            description: The response message containing the greetings
+tags:
+    - name: Greeter
+      description: The greeting service definition.
+    - name: User

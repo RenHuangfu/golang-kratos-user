@@ -1,0 +1,28 @@
+server:
+  http:
+    addr: 0.0.0.0:8668
+    timeout: 1s
+  grpc:
+    addr: 0.0.0.0:8669
+    timeout: 1s
+data:
+  database:
+    driver: mysql
+    source: root:000@tcp(127.0.0.1:3306)/lottery_system
+    addr: 127.0.0.1:3306
+    user: root
+    password: "000"
+    dataBase: lottery_system
+    maxIdleConn : 2000
+    maxOpenConn: 20000
+    maxIdleTime: 30
+
+  redis:
+    addr: 127.0.0.1:6379
+    db: 8
+    passWord: ""
+    read_timeout: 2s
+    write_timeout: 2s
+micro:
+  lb:
+    addr: 127.0.0.1:20000
